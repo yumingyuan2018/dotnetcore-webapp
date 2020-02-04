@@ -6,6 +6,7 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+  <!-- Really bad dependencies! -->
     <PackageReference Include="Microsoft.Data.Services" Version="5.0.0.50403"/>
     <PackageReference Include="AntiXSS" Version="4.0.1"/>
     <PackageReference Include="MvvmLight" Version="4.1.23"/>

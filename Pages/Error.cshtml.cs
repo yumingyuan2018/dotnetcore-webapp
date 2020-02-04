@@ -26,6 +26,11 @@ namespace dotnetcore_webapp.Pages
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
+
+
+
+            
         }
     }
 }
