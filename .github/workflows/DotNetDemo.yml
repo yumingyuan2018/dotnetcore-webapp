@@ -30,6 +30,16 @@ jobs:
         name: reports
         path: reports
     
+     #Security audit of dependencies 
+    - uses: AppThreat/dep-scan-action@master
+      env:
+        VULNDB_HOME: ${{ github.workspace }}/db
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/upload-artifact@v1
+      with:
+        name: reports
+        path: reports
+    
     # dotnet build and publish
     - name: Build with dotnet
       run: dotnet build --configuration Release
