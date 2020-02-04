@@ -22,6 +22,10 @@ jobs:
 #        publish-profile: ${{ secrets.publish_profile }}
 #        package: "bin/Release/netcoreapp3.0"
 
+    #Scan OSS - open source security issues
+    - name: sast-scan
+      uses: AppThreat/sast-scan-action@1.0.2
+
     
     # dotnet build and publish
     - name: Build with dotnet
