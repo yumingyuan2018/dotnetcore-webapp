@@ -13,14 +13,14 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
-#    - name: Build with dotnet
-#      run: dotnet build --configuration Release
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
 
-#    - uses: azure/appservice-actions/webapp@master
-#      with:
-#        app-name: dotnetcorewebapp19
-#        publish-profile: ${{ secrets.publish_profile }}
-#        package: "bin/Release/netcoreapp3.0"
+    - uses: azure/appservice-actions/webapp@master
+      with:
+        app-name: dotnetcorewebapp19
+        publish-profile: ${{ secrets.publish_profile }}
+        package: "bin/Release/netcoreapp3.0"
 
 
     #https://github.com/sonatype-nexus-community/nancy-github-action 
