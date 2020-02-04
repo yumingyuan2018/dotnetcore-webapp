@@ -22,6 +22,13 @@ jobs:
 #        publish-profile: ${{ secrets.publish_profile }}
 #        package: "bin/Release/netcoreapp3.0"
 
+  
+  
+   # Adding Snyk to scan 3rd party dependencies for known vulns
+    - name: Snyk CLI Action
+      uses: clarkio/snyk-cli-action@1.0.0
+
+
     #Scan OSS - open source security issues
     - name: sast-scan
       uses: AppThreat/sast-scan-action@1.0.2
