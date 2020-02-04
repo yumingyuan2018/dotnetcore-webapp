@@ -27,6 +27,9 @@ jobs:
    # Adding Snyk to scan 3rd party dependencies for known vulns
     - name: Snyk CLI Action
       uses: clarkio/snyk-cli-action@1.0.0
+      with:
+        name: SNYKreports
+        path: reports
 
 
     #Scan OSS - open source security issues
@@ -34,7 +37,7 @@ jobs:
       uses: AppThreat/sast-scan-action@1.0.2
     - uses: actions/upload-artifact@v1
       with:
-        name: reports
+        name: SASTreports
         path: reports
     
      #Security audit of dependencies 
@@ -44,7 +47,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v1
       with:
-        name: reports
+        name: DEPreports
         path: reports
     
     # dotnet build and publish
