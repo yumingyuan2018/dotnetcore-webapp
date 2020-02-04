@@ -23,6 +23,18 @@ jobs:
         package: "bin/Release/netcoreapp3.0"
 
 
+
+    name: Snyk to find my insecure dependencies 
+
+    security:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/dotnet@master
+        env:
+         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
     #https://github.com/sonatype-nexus-community/nancy-github-action 
     #- name: Nancy
     #  uses: sonatype-nexus-community/nancy-github-action@master
