@@ -22,6 +22,36 @@ jobs:
 #        publish-profile: ${{ secrets.publish_profile }}
 #        package: "bin/Release/netcoreapp3.0"
 
+   #Adding Secret-scan from Github staff
+    - name: Secret Scan
+      uses: max/secret-scan@1.0.0
+
+  
+   # Adding Snyk to scan 3rd party dependencies for known vulns
+    - name: Snyk CLI Action
+      uses: clarkio/snyk-cli-action@1.0.0
+      with:
+        name: SNYKreports
+        path: reports
+
+
+    #Scan OSS - open source security issues
+    - name: sast-scan
+      uses: AppThreat/sast-scan-action@1.0.2
+    - uses: actions/upload-artifact@v1
+      with:
+        name: SASTreports
+        path: reports
+    
+     #Security audit of dependencies 
+    - uses: AppThreat/dep-scan-action@master
+      env:
+        VULNDB_HOME: ${{ github.workspace }}/db
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/upload-artifact@v1
+      with:
+        name: DEPreports
+        path: reports
     
     # dotnet build and publish
     - name: Build with dotnet
