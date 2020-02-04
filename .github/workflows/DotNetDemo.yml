@@ -42,13 +42,13 @@ jobs:
 
 
    #Adding Secret-scan from Github staff
-    - name: Secret Scan
-      uses: max/secret-scan@1.0.0
+   # - name: Secret Scan
+   #   uses: max/secret-scan@1.0.0
 
   
    # Adding Snyk to scan 3rd party dependencies for known vulns
-    - name: Snyk CLI Action
-      uses: clarkio/snyk-cli-action@1.0.0
+   # - name: Snyk CLI Action
+   #   uses: clarkio/snyk-cli-action@1.0.0
       #with:
         #name: SNYKreports
         #path: reports
