@@ -25,7 +25,10 @@ jobs:
     #Scan OSS - open source security issues
     - name: sast-scan
       uses: AppThreat/sast-scan-action@1.0.2
-
+    - uses: actions/upload-artifact@v1
+      with:
+        name: reports
+        path: reports
     
     # dotnet build and publish
     - name: Build with dotnet
