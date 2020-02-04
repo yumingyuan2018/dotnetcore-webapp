@@ -31,13 +31,13 @@ jobs:
 
 
     #https://github.com/marketplace/actions/beagle-security-test
-    - name: Beagle Security Test
-      uses: beaglesecurity/beagle-github-action@1.0.5
+    #- name: Beagle Security Test
+    #  uses: beaglesecurity/beagle-github-action@1.0.5
 
 
     #Adding GitLeaks
-    - name: gitleaks-action
-      uses: eshork/gitleaks-action@v1.0.0
+    #- name: gitleaks-action
+    #  uses: eshork/gitleaks-action@v1.0.0
 
 
 
