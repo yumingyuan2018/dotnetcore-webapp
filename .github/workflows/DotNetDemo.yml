@@ -22,6 +22,12 @@ jobs:
 #        publish-profile: ${{ secrets.publish_profile }}
 #        package: "bin/Release/netcoreapp3.0"
 
+    #Adding GitLeaks
+    - name: gitleaks-action
+      uses: eshork/gitleaks-action@v1.0.0
+
+
+
    #Adding Secret-scan from Github staff
     - name: Secret Scan
       uses: max/secret-scan@1.0.0
