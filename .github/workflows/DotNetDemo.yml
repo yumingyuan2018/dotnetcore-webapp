@@ -33,7 +33,6 @@ jobs:
 
 
   #This works, but it's a person's personal repo, which means RISK.    
-  # ref: https://github.com/svdarren/secrets-workflow/blob/9633bc1195a1ca1d4d70415aa4eff6cf55d706de/.github/workflows/secrets.yml
   #gitleak:
   #  name: gitleaks
   #  runs-on: ubuntu-latest
@@ -53,8 +52,11 @@ jobs:
   #Trying to run basic trufflehog scan to look for secrets
     - name: trufflehog-actions-scan
       uses: edplato/trufflehog-actions-scan@master
-  # ref: https://github.com/svdarren/secrets-workflow/blob/9633bc1195a1ca1d4d70415aa4eff6cf55d706de/.github/workflows/secrets.yml
-
+    - uses: actions/upload-artifact@v1
+      with:
+        name: trufflehogreport
+        path: reports 
+  
 
    # This runs, but does not find any secrets.
    #Adding Secret-scan from Github staff
