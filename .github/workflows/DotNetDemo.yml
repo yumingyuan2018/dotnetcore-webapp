@@ -56,12 +56,24 @@ jobs:
   #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-   # This does not work, yet.
+   # This runs, but does not find any secrets.
    #Adding Secret-scan from Github staff
     -  name: Secret Scan
        uses: max/secret-scan@1.0.0
-  
+    - uses: actions/upload-artifact@v1
+      with:
+        name: secretscanreport
+        path: reports  
    
+   #https://github.com/marketplace/actions/federacy-salus-security-scan
+    - uses: actions/checkout@v1
+    - name: Federacy Salus Scan
+      id: salus_scan
+      uses: federacy/scan-action@v1  
+    - uses: actions/upload-artifact@v1
+      with:
+        name: federacyreport
+        path: reports  
 
     # This runs successfully but does not provide useful results
     #Scan OSS - open source security issues
