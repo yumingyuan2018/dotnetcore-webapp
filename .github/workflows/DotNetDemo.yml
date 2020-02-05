@@ -15,20 +15,23 @@ jobs:
         dotnet-version: 3.0.100
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
+    #Not currently publishing to Azure, commenting out
+    #- uses: azure/appservice-actions/webapp@master
+    #  with:
+    #    app-name: dotnetcorewebapp19
+    #    publish-profile: ${{ secrets.publish_profile }}
+    #    package: "bin/Release/netcoreapp3.0"
 
-    - uses: azure/appservice-actions/webapp@master
-      with:
-        app-name: dotnetcorewebapp19
-        publish-profile: ${{ secrets.publish_profile }}
-        package: "bin/Release/netcoreapp3.0"
 
 
-
+    # This works, commented out so it doesn't break the build.
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/dotnet@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
+    # This does not work, yet.
     #https://github.com/sonatype-nexus-community/nancy-github-action 
     #- name: Nancy
     #  uses: sonatype-nexus-community/nancy-github-action@master
@@ -36,57 +39,57 @@ jobs:
     #    target: go.sum
 
 
+    # This does not work, yet.
     #https://github.com/marketplace/actions/beagle-security-test
     #- name: Beagle Security Test
     #  uses: beaglesecurity/beagle-github-action@1.0.5
 
 
+    # This does not work, yet.
     #Adding GitLeaks
     #- name: gitleaks-action
     #  uses: eshork/gitleaks-action@v1.0.0
 
 
 
+   # This does not work, yet.
    #Adding Secret-scan from Github staff
    # - name: Secret Scan
    #   uses: max/secret-scan@1.0.0
 
   
-   # Adding Snyk to scan 3rd party dependencies for known vulns
-   # - name: Snyk CLI Action
-   #   uses: clarkio/snyk-cli-action@1.0.0
-      #with:
-        #name: SNYKreports
-        #path: reports
+   
 
-
+    # This runs successfully but does not provide useful results
     #Scan OSS - open source security issues
-    - name: sast-scan
-      uses: AppThreat/sast-scan-action@1.0.2
-    - uses: actions/upload-artifact@v1
-      with:
-        name: SASTreports
-        path: reports
+    #- name: sast-scan
+    #  uses: AppThreat/sast-scan-action@1.0.2
+    #- uses: actions/upload-artifact@v1
+    #  with:
+    #    name: SASTreports
+    #    path: reports
     
-     #Security audit of dependencies 
-    - uses: AppThreat/dep-scan-action@master
-      env:
-        VULNDB_HOME: ${{ github.workspace }}/db
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/upload-artifact@v1
-      with:
-        name: DEPreports
-        path: reports
+    # This runs successfully but can't seem to find the dependencies file
+    #Security audit of dependencies 
+    #- uses: AppThreat/dep-scan-action@master
+    #  env:
+    #    VULNDB_HOME: ${{ github.workspace }}/db
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- uses: actions/upload-artifact@v1
+    #  with:
+    #    name: DEPreports
+    #    path: reports
     
+    #This works. However. my azure instance is down right now, so let's skip it.
     # dotnet build and publish
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
-    - name: dotnet publish
-      run: |
-        dotnet publish -c Release -o dotnetcorewebapp 
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-      uses: azure/webapps-deploy@v1
-      with: 
-        app-name: dotnetcorewebapp19 # Replace with your app name
-        publish-profile: ${{ secrets.publish_profile }} # Define secret variable in repository settings as per action documentation
-        package: './dotnetcorewebapp' 
+    #- name: Build with dotnet
+    #  run: dotnet build --configuration Release
+    #- name: dotnet publish
+    #  run: |
+    #    dotnet publish -c Release -o dotnetcorewebapp 
+    #- name: 'Run Azure webapp deploy action using publish profile credentials'
+    #  uses: azure/webapps-deploy@v1
+    #  with: 
+    #    app-name: dotnetcorewebapp19 # Replace with your app name
+    #    publish-profile: ${{ secrets.publish_profile }} # Define secret variable in repository settings as per action documentation
+    #    package: './dotnetcorewebapp' 
