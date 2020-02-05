@@ -26,10 +26,10 @@ jobs:
 
 
     # This works, commented out so it doesn't break the build.
-    - name: Run Snyk to check for vulnerabilities
-      uses: snyk/actions/dotnet@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #- name: Run Snyk to check for vulnerabilities
+    #  uses: snyk/actions/dotnet@master
+    #  env:
+    #    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
     # This does not work, yet.
     #https://github.com/sonatype-nexus-community/nancy-github-action 
@@ -40,15 +40,9 @@ jobs:
 
 
     # This does not work, yet.
-    #https://github.com/marketplace/actions/beagle-security-test
-    #- name: Beagle Security Test
-    #  uses: beaglesecurity/beagle-github-action@1.0.5
-
-
-    # This does not work, yet.
     #Adding GitLeaks
-    #- name: gitleaks-action
-    #  uses: eshork/gitleaks-action@v1.0.0
+    - name: gitleaks-action
+      uses: eshork/gitleaks-action@v1.0.0
 
 
 
