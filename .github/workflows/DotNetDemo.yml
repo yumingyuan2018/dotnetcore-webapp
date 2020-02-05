@@ -31,13 +31,6 @@ jobs:
     #  env:
     #    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-    # This does not work, yet.
-    #https://github.com/sonatype-nexus-community/nancy-github-action 
-    #- name: Nancy
-    #  uses: sonatype-nexus-community/nancy-github-action@master
-    #  with:
-    #    target: go.sum
-
 
   #This works, but it's a person's personal repo, which means RISK.    
   # ref: https://github.com/svdarren/secrets-workflow/blob/9633bc1195a1ca1d4d70415aa4eff6cf55d706de/.github/workflows/secrets.yml
@@ -54,6 +47,13 @@ jobs:
   #    - uses: CySeq/gitcret@v2
   #      env:
   #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  
+  #Trying to run basic trufflehog scan to look for secrets
+    - name: trufflehog-actions-scan
+      uses: edplato/trufflehog-actions-scan@master
+  # ref: https://github.com/svdarren/secrets-workflow/blob/9633bc1195a1ca1d4d70415aa4eff6cf55d706de/.github/workflows/secrets.yml
 
 
    # This runs, but does not find any secrets.
@@ -76,26 +76,6 @@ jobs:
     #  with:
     #    report_uri: "https://www.securedevelopment.com/collector/salus_scans/71757b98-4b14-4ca7-89d7-3150074612bf"  
         
-
-    # This runs successfully but does not provide useful results
-    #Scan OSS - open source security issues
-    #- name: sast-scan
-    #  uses: AppThreat/sast-scan-action@1.0.2
-    #- uses: actions/upload-artifact@v1
-    #  with:
-    #    name: SASTreports
-    #    path: reports
-    
-    # This runs successfully but can't seem to find the dependencies file
-    #Security audit of dependencies 
-    #- uses: AppThreat/dep-scan-action@master
-    #  env:
-    #    VULNDB_HOME: ${{ github.workspace }}/db
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #- uses: actions/upload-artifact@v1
-    #  with:
-    #    name: DEPreports
-    #    path: reports
     
     #This works. However. my azure instance is down right now, so let's skip it.
     # dotnet build and publish
