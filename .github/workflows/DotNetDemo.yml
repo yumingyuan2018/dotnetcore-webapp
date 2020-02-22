@@ -52,7 +52,7 @@ jobs:
   #Trying to run basic trufflehog scan to look for secrets
     - name: trufflehog-actions-scan
       uses: edplato/trufflehog-actions-scan@custom-rules
-    #- uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v1
       with:
         name: trufflehogreport
         path: reports 
