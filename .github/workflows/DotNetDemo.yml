@@ -57,10 +57,10 @@ jobs:
         #path: reports 
   
 
-   # This runs, but does not find any secrets.
+   # broken
    #Adding Secret-scan from Github staff
-      -  name: Secret Scan
-         uses: max/secret-scan@1.0.0
+   #   -  name: Secret Scan
+   #      uses: max/secret-scan@1.0.0
 
            
     
