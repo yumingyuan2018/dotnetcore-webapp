@@ -51,7 +51,7 @@ jobs:
   
   #Trying to run basic trufflehog scan to look for secrets
     - name: trufflehog-actions-scan
-      uses: edplato/trufflehog-actions-scan@master
+      uses: edplato/trufflehog-actions-scan@custom-rules
     #- uses: actions/upload-artifact@v1
       with:
         name: trufflehogreport
@@ -66,14 +66,14 @@ jobs:
    
    #Does not work, yet.
    #https://github.com/marketplace/actions/federacy-salus-security-scan
-    #- name: Federacy Salus Security Scan Example
-    #- uses: actions/checkout@v1
-    #- name: Federacy Salus Scan
-    #  id: salus_scan
-    #  uses: federacy/scan-action@v1  
-    #- uses: actions/upload-artifact@v1
-    #  with:
-    #    report_uri: "https://www.securedevelopment.com/collector/salus_scans/71757b98-4b14-4ca7-89d7-3150074612bf"  
+    - name: Federacy Salus Security Scan Example
+    - uses: actions/checkout@v1
+    - name: Federacy Salus Scan
+      id: salus_scan
+      uses: federacy/scan-action@v0.1.1  
+    - uses: actions/upload-artifact@v1
+      with:
+        report_uri: "https://www.securedevelopment.com/collector/salus_scans/71757b98-4b14-4ca7-89d7-3150074612bf"  
         
     
     #This works. However. my azure instance is down right now, so let's skip it.
