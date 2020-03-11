@@ -40,8 +40,6 @@ jobs:
           dotnet publish -c Release -o myapp 
        
       # trufflehog
-      - name: trufflehog
-      - uses: actions/checkout@master
       - name: trufflehog-actions-scan
         uses: edplato/trufflehog-actions-scan@master
         with:
