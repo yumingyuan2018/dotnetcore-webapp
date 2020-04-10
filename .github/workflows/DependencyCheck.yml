@@ -37,3 +37,8 @@ jobs:
         # This directory path is pointing to the same logical directory above but 
         # outside the docker container
         path: ${{ github.workspace }}/dcReports
+        
+    #Adding a call to the community edition of Nexus IQ    
+    - name: Nexus IQ for GitHub Actions
+      uses: sonatype-nexus-community/iq-github-action@1.1.0
+  
