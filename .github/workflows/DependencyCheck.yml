@@ -39,6 +39,19 @@ jobs:
         path: ${{ github.workspace }}/dcReports
         
     #Adding a call to the community edition of Nexus IQ    
-    - name: Nexus IQ for GitHub Actions
-      uses: sonatype-nexus-community/iq-github-action@1.1.0
-  
+    #- name: Nexus IQ for GitHub Actions
+    #  uses: sonatype-nexus-community/iq-github-action@1.1.0
+    #  with:
+    #    serverUrl: http://nexus-iq-server
+    #    username: username
+    #    password: ${{ secrets.password }}
+    #    applicationId: sample-maven
+    #    stage: Build
+    #    target: ./target/
+     
+     
+     #https://github.com/evanextreme/detect-secrets-action
+    - name: Detect Secrets
+      uses: evanextreme/detect-secrets-action@1.0.0
+     
+
